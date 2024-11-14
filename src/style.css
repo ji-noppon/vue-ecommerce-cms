@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark-mode-custom {
+  @apply dark:!border-blue-500 dark:!bg-gray-900 dark:!text-white;
+}

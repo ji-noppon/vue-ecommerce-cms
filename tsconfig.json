@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@com/*": ["src/components/*"],
+      "@/*": ["src/*"],
+    }
+  },
+  "files": [], // ว่างได้ ไม่ต้องมีไฟล์โดยตรง
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+}
