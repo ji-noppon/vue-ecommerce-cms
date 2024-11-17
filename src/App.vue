@@ -11,33 +11,16 @@ const toggleDarkMode = () => document.documentElement.classList.toggle("dark");
 
 <template>
   <div>
-    <div class="flex">
-      <div class="w-[250px]"><BaseSideBar /></div>
-      <div class="w-full main-wrap dark-mode-custom">
-        <ComNavBar />
 
-        <RouterView></RouterView>
-        
-        <!-- <div class="main-container dark-mode-custom">
-          <ComDashboard />
-        </div> -->
-    </div>
-    </div>
+    <RouterView></RouterView>
     
-    
-    <div><BaseAlert /></div>
+    <!-- <div><BaseAlert /></div>
     <BaseCard />
-    <button @click="toggleDarkMode">dark mode</button>
+    <button @click="toggleDarkMode">dark mode</button> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-.main-wrap {
-  @apply px-4 bg-gray-100;
 
-  .main-container {
-    @apply h-[calc(100%-100px)] bg-white mt-4 rounded-lg border dark:border-blue-500;
-  }
-}
 
 </style>
