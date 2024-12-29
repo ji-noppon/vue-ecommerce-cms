@@ -1,11 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// const routes = [
-//   { path: '/', component: () => import('../components/ComDashboard.vue') },
-//   { path: '/new-case', component: () => import('../pages/NewCasePage.vue'), meta: { requiresAuth: true }  },
-//   { path: '/login', component: () => import('../pages/LoginPage.vue'), meta: { requiresAuth: true }  },
-// ]
-
 const routes = [
   { 
     path: '/', 
@@ -19,6 +13,16 @@ const routes = [
       {
         path: '/new-case', // หน้ารายละเอียด
         component: () => import('../pages/NewCasePage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/product', // หน้ารายละเอียด
+        component: () => import('../pages/ProductPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/user-management', // หน้ารายละเอียด
+        component: () => import('../pages/UserManagement.vue'),
         meta: { requiresAuth: true }
       }
     ]
@@ -43,7 +47,6 @@ const router = createRouter({
   routes,
 })
 
-// Navigation Guard เพื่อทำการ redirect หากผู้ใช้ไม่ได้ล็อกอิน
 router.beforeEach((to, from, next) => {
   const isAuthenticated = true;  // กำหนดสถานะการล็อกอินจาก Vuex หรืออื่นๆ
 

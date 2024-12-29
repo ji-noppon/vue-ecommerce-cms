@@ -4,23 +4,19 @@ import BaseSideBar from "@com/BaseSideBar.vue";
 </script>
 
 <template>
-    <div class="flex">
-      <div class="w-[250px]"><BaseSideBar /></div>
-      <div class="w-full main-wrap dark-mode-custom">
-        <ComNavBar />
-        <div>
-          <RouterView></RouterView>
-        </div>
-      
-        
-        <!-- <div class="main-container dark-mode-custom">
-          <ComDashboard />
-        </div> -->
+  <div class="body-container">
+    <BaseSideBar />
+    <div class="w-full main-wrap dark-mode-custom" style="border:unset">
+      <ComNavBar />
+      <div><RouterView></RouterView></div>
     </div>
-    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.body-container {
+  @apply grid grid-cols-[auto_auto] sm:grid-cols-[250px_auto]
+}
 .main-wrap {
   @apply px-4 bg-gray-100;
 

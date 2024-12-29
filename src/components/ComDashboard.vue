@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LineChart from './chart/LineChart.vue'
 import PieChart from './chart/PieChart.vue'
+import BarChart from './chart/BarChart.vue';
 import NewIcon from '@/assets/icons/NewIcon.vue'
 import InprogressIcon from '@/assets/icons/InprogressIcon.vue';
 import RejectIcon from '@/assets/icons/RejectIcon.vue';
@@ -64,10 +65,13 @@ import TotalIcon from '@/assets/icons/TotalIcon.vue';
       </div>
     </dl>
 
-    <div class="mt-4 grid grid-cols-3">
-      <div class="col-span-2 bg-white p-4 rounded-lg">
-        <LineChart />
+    <div class="mt-4 grid grid-cols-2">
+      <div class="bg-white p-4 rounded-lg">
+        <BarChart />
       </div>
+      <!-- <div class="col-span-2 bg-white p-4 rounded-lg">
+        <LineChart />
+      </div> -->
 
       <div class="ml-4 bg-white p-4 rounded-lg">
         <PieChart />
