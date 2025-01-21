@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { ROUTE_NAME } from '../constants/route'
 
 const routes = [
   { 
@@ -7,33 +8,57 @@ const routes = [
     children: [
       {
         path: '', // หน้า Dashboard หลัก
+        name: ROUTE_NAME.DASHBOARD,
         component: () => import('../components/ComDashboard.vue'),
         meta: { requiresAuth: true }
       },
       {
-        path: '/new-case', // หน้ารายละเอียด
-        component: () => import('../pages/NewCasePage.vue'),
+        path: '/annoucement', // หน้ารายละเอียด
+        name: ROUTE_NAME.ANNOUCEMENT,
+        component: () => import('../pages/AnnoucementPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/banner', // หน้ารายละเอียด
+        name: ROUTE_NAME.BANNER,
+        component: () => import('../pages/BannerPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/category', // หน้ารายละเอียด
+        name: ROUTE_NAME.CATEGORY,
+        component: () => import('../pages/CategoryPage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/group-product', // หน้ารายละเอียด
+        name: ROUTE_NAME.GROUP_PRODUCT,
+        component: () => import('../pages/GroupProductPage.vue'),
         meta: { requiresAuth: true }
       },
       {
         path: '/product', // หน้ารายละเอียด
+        name: ROUTE_NAME.PRODUCT,
         component: () => import('../pages/ProductPage.vue'),
         meta: { requiresAuth: true }
       },
       {
         path: '/user-management', // หน้ารายละเอียด
-        component: () => import('../pages/UserManagement.vue'),
+        name: ROUTE_NAME.USER_MANAGEMENT,
+        component: () => import('../pages/UserManagementPage.vue'),
         meta: { requiresAuth: true }
       }
     ]
   },
   { 
-    path: '/login', 
+    path: '/login',
+    name: ROUTE_NAME.LOGIN, 
     component: () => import('../pages/LoginPage.vue'), 
     meta: { requiresAuth: false }  
   },
   {
     path: '/not-found',
+    name: ROUTE_NAME.NOT_FOUND,
     component: () => import('../pages/NotFoundPage.vue'),
   },
   {

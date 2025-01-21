@@ -16,7 +16,7 @@ import TotalIcon from '@/assets/icons/TotalIcon.vue';
     <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
       <div class="icon-box">
         <div>
-          <NewIcon class="icon--style color--newcase" /> 
+          <NewIcon :width="60" :height="60" class="icon--style color--newcase" /> 
         </div>
         <div>
           <dt class="order-last text-lg font-medium">New Case</dt>
@@ -26,40 +26,40 @@ import TotalIcon from '@/assets/icons/TotalIcon.vue';
 
       <div class="icon-box">
         <div>
-          <InprogressIcon class="icon--style color--inprogress" /> 
+          <InprogressIcon :width="60" :height="60" class="icon--style color--inprogress" /> 
         </div>
         <div>
-          <dt class="order-last text-lg font-medium">Inprogress Case</dt>
+          <dt class="order-last text-lg font-medium">In Progress</dt>
           <dd class="text-4xl font-extrabold  md:text-5xl">5</dd>
         </div>
       </div>
 
       <div class="icon-box">
         <div>
-          <RejectIcon class="icon--style color--reject" /> 
+          <RejectIcon :width="60" :height="60" class="icon--style color--reject" /> 
         </div>
         <div>
-          <dt class="order-last text-lg font-medium">Reject Case</dt>
+          <dt class="order-last text-lg font-medium">Cancelled Orders</dt>
           <dd class="text-4xl font-extrabold  md:text-5xl">3</dd>
         </div>
       </div>
 
       <div class="icon-box">
         <div>
-          <CompleteIcon class="icon--style color--complete" /> 
+          <CompleteIcon :width="60" :height="60" class="icon--style color--complete" /> 
         </div>
         <div>
-          <dt class="order-last text-lg font-medium">Complete Case</dt>
+          <dt class="order-last text-lg font-medium">Completed Orders</dt>
           <dd class="text-4xl font-extrabold  md:text-5xl">10</dd>
         </div>
       </div>
 
       <div class="icon-box">
         <div>
-          <TotalIcon class="icon--style color--total" /> 
+          <TotalIcon :width="60" :height="60" class="icon--style color--total" /> 
         </div>
         <div>
-          <dt class="order-last text-lg font-medium">Total Case</dt>
+          <dt class="order-last text-lg font-medium">Total Sales</dt>
           <dd class="text-4xl font-extrabold  md:text-5xl">20</dd>
         </div>
       </div>
@@ -86,13 +86,13 @@ import TotalIcon from '@/assets/icons/TotalIcon.vue';
   @apply flex justify-evenly items-center rounded-lg border border-gray-100 p-4 text-center bg-white
 }
 .icon--style {
-  @apply w-[50px] h-[50px] p-2 rounded-full ;
+  @apply p-2 rounded-full ;
 }
 .color--newcase {
-  @apply bg-blue-100;
+  @apply bg-blue-100 text-blue-500;
 }
 .color--inprogress {
-  @apply bg-orange-100
+  @apply bg-orange-100 text-orange-500
 }
 .color--reject {
   @apply bg-red-100

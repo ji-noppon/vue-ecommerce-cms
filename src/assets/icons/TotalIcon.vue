@@ -1,10 +1,11 @@
+<script setup lang="ts">
+const props = defineProps({
+  width: Number,
+  height: Number,
+}); 
+</script>
 <template>
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    stroke="#d4d4d4"
-  >
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :style="{width: `${props.width}px`, height: `${props.width}px`}">
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g
       id="SVGRepo_tracerCarrier"
@@ -13,20 +14,18 @@
     ></g>
     <g id="SVGRepo_iconCarrier">
       <path
-        d="M5 6C5 5.44772 5.44772 5 6 5H18C18.5523 5 19 5.44772 19 6C19 6.55228 18.5523 7 18 7H6C5.44772 7 5 6.55228 5 6Z"
-        fill="#8c8c8c"
+        d="M4 5V19C4 19.5523 4.44772 20 5 20H19"
+        stroke="#000000"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       ></path>
       <path
-        d="M5 10C5 9.44772 5.44772 9 6 9H18C18.5523 9 19 9.44772 19 10C19 10.5523 18.5523 11 18 11H6C5.44772 11 5 10.5523 5 10Z"
-        fill="#8c8c8c"
-      ></path>
-      <path
-        d="M5 14C5 13.4477 5.44772 13 6 13H18C18.5523 13 19 13.4477 19 14C19 14.5523 18.5523 15 18 15H6C5.44772 15 5 14.5523 5 14Z"
-        fill="#8c8c8c"
-      ></path>
-      <path
-        d="M5 18C5 17.4477 5.44772 17 6 17H18C18.5523 17 19 17.4477 19 18C19 18.5523 18.5523 19 18 19H6C5.44772 19 5 18.5523 5 18Z"
-        fill="#8c8c8c"
+        d="M18 9L13 13.9999L10.5 11.4998L7 14.9998"
+        stroke="#000000"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       ></path>
     </g>
   </svg>

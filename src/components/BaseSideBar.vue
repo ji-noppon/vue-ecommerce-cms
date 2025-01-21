@@ -1,54 +1,56 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { ROUTE_NAME } from "@/constants/route";
 
 const router = useRouter();
+const route = useRoute(); // ใช้สำหรับดึง route ปัจจุบัน
 
 interface MenuItem {
   name: string;
   active: boolean;
-  redirect: () => void;
+  routeName: string;
+  redirect?: () => void;
 }
 
 const menuItems = ref<MenuItem[]>([
-  { name: "Dashboard", active: true, redirect: redirectDashboardPage },
-  { name: "Case", active: false, redirect: redirectNewCasePage },
-  /* { name: "Inprogress",       active: false, count: 5,    redirect: redirectDashboardPage },
-  { name: "Reject",           active: false, count: 8,    redirect: redirectDashboardPage },
-  { name: "Complete",         active: false, count: 20,   redirect: redirectDashboardPage }, */
-  { name: "Product", active: false, redirect: redirectProductPage },
-  { name: "User Management", active: false, redirect: redirectUserManagement },
+  { name: "Dashboard", active: true, routeName: ROUTE_NAME.DASHBOARD },
+  { name: "Annoucement", active: false, routeName: ROUTE_NAME.ANNOUCEMENT },
+  { name: "Banner", active: false, routeName: ROUTE_NAME.BANNER },
+  { name: "Category", active: false, routeName: ROUTE_NAME.CATEGORY },
+  { name: "Product", active: false, routeName: ROUTE_NAME.PRODUCT },
+  { name: "Group Product", active: false, routeName: ROUTE_NAME.GROUP_PRODUCT },
+  { name: "User Management", active: false, routeName: ROUTE_NAME.USER_MANAGEMENT },
 ]);
 
 function handleMenuClick(menu: MenuItem) {
-  menuItems.value.forEach((menu) => (menu.active = false));
-  menu.active = true;
-  if (menu.redirect) {
-    menu.redirect();
-  }
+  menuItems.value.forEach((m) => (m.active = false));
+  menuItems.value.forEach((m) => {
+    if (m.name === menu.name) {
+      m.active = true
+    }
+  })
+  router.push({ name: menu.routeName });
 }
 
-function redirectDashboardPage() {
-  menuItems.value[0].active = true;
-  router.push("/");
+function setActiveMenu() {
+  const currentRouteName = route.name;
+  menuItems.value.forEach((menu) => {
+    menu.active = menu.routeName === currentRouteName;
+  });
 }
 
-function redirectNewCasePage() {
-  router.push("/new-case");
-}
+onMounted(() => {
+  setActiveMenu();
+});
 
-function redirectProductPage() {
-  router.push("/product");
-}
-
-function redirectUserManagement() {
-  router.push("/user-management");
-}
 </script>
 <template>
   <div class="sidebar-wrap dark-mode-custom">
     <div class="px-4 py-6">
-      <span class="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
+      <span
+        class="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600"
+      >
         Logo
       </span>
 
@@ -65,7 +67,9 @@ function redirectUserManagement() {
       </ul>
     </div>
 
-    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100 dark:border-blue-500">
+    <div
+      class="sticky inset-x-0 bottom-0 border-t border-gray-100 dark:border-blue-500"
+    >
       <a
         href="#"
         class="dark-mode-custom flex items-center gap-2 bg-white p-4 hover:bg-gray-50"
@@ -92,10 +96,10 @@ function redirectUserManagement() {
 
 <style lang="scss" scoped>
 .sidebar-wrap {
-  @apply h-screen flex-col justify-between border-e bg-white hidden sm:flex;
+  @apply hidden h-screen flex-col justify-between border-e bg-white sm:flex;
 }
 .sidebar-wrap-mobile {
-  @apply sm:hidden 
+  @apply sm:hidden;
 }
 
 .sidebar-menu {

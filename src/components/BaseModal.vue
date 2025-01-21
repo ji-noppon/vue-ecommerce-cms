@@ -50,11 +50,6 @@ function close() {
   @apply bg-slate-50 rounded-md p-4 relative
 }
 
-.modal-footer {
-
-}
-
-
 .bounce-enter-active {
   animation: bounce-in 0.3s;
 }

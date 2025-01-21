@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const props = defineProps({
+  width: Number,
+  height: Number,
+}); 
+</script>
 <template>
   <svg
     fill="#ff0000"
@@ -14,6 +20,7 @@
       stroke-miterlimit: 2;
     "
     stroke="#ff0000"
+    :style="{width: `${props.width}px`, height: `${props.width}px`}"
   >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g

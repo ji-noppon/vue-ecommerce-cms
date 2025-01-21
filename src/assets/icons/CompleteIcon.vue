@@ -1,9 +1,16 @@
+<script setup lang="ts">
+const props = defineProps({
+  width: Number,
+  height: Number,
+}); 
+</script>
 <template>
   <svg
     fill="#1d9405"
     viewBox="0 0 1920 1920"
     xmlns="http://www.w3.org/2000/svg"
     stroke="#1d9405"
+    :style="{width: `${props.width}px`, height: `${props.width}px`, padding: '12px'}"
   >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g
