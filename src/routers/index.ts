@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { ROUTE_NAME } from '../constants/route'
+import { useLoadingRouterStore } from '../stores/LoadingRouterStore'
+import { storeToRefs } from 'pinia'
 
 const routes = [
   { 
@@ -73,6 +75,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const loadingRouter = useLoadingRouterStore()
+  const { isLoadingPage } = storeToRefs(loadingRouter)
+
+  isLoadingPage.value = true
+  
   const isAuthenticated = true;  // กำหนดสถานะการล็อกอินจาก Vuex หรืออื่นๆ
 
   // หากต้องการการล็อกอินและยังไม่ได้ล็อกอิน
@@ -88,6 +95,13 @@ router.beforeEach((to, from, next) => {
     next();
   }
 })
+
+router.afterEach(() => {
+  const loadingRouter = useLoadingRouterStore()
+  const { isLoadingPage } = storeToRefs(loadingRouter)
+
+  isLoadingPage.value = false
+});
 
 export {
   router

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import ComNavBar from "@com/ComNavBar.vue";
 import BaseSideBar from "@com/BaseSideBar.vue";
+import Loading from "@com/Loading.vue";
+import { useLoadingRouterStore } from '@/stores/LoadingRouterStore'
+import { storeToRefs } from 'pinia'
+
+const loadingRouter = useLoadingRouterStore()
+const { isLoadingPage } = storeToRefs(loadingRouter)
 </script>
 
 <template>
@@ -8,7 +14,8 @@ import BaseSideBar from "@com/BaseSideBar.vue";
     <BaseSideBar />
     <div class="w-full main-wrap dark-mode-custom" style="border:unset">
       <ComNavBar />
-      <div><RouterView></RouterView></div>
+      <div v-if="isLoadingPage"> <Loading /></div>
+      <div v-else><RouterView></RouterView></div>
     </div>
   </div>
 </template>

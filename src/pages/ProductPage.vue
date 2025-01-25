@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Product } from "@/interfaces/modules/product";
 import { FilterMatchMode } from "@primevue/core/api";
+import { ref } from "vue";
+import { useBaseModalStore } from '@/stores/CategoryStore'
 import {
   DataTable,
   Dialog,
@@ -17,7 +19,6 @@ import {
   RadioButton,
   FileUpload,
 } from "primevue";
-import { ref } from "vue";
 
 const productTable = ref();
 const products = ref<Product[]>([

@@ -1,21 +1,10 @@
 <script setup lang="ts">
 import { Category } from "@/interfaces/modules/category";
 import { FilterMatchMode } from "@primevue/core/api";
-import {
-  DataTable,
-  Dialog,
-  IconField,
-  InputIcon,
-  Column,
-  Button,
-  InputText,
-  FileUpload,
-  ToggleSwitch
-} from "primevue";
 import { ref } from "vue";
 
 const productTable = ref();
-const products = ref<Category[]>([
+const categorys = ref<Category[]>([
   {
     id: "1000",
     nameTh: "โน็ตบุ้ค",
@@ -33,12 +22,12 @@ const products = ref<Category[]>([
     isActive: true,
   },
 ]);
-const product = ref<Category>();
+const category = ref<Category>();
 
-const productDialog = ref(false);
-const deleteProductDialog = ref(false);
+const categoryDialog = ref(false);
+const deleteCategoryDialog = ref(false);
 
-const selectedProducts = ref();
+const selectedCategory = ref();
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
@@ -59,24 +48,24 @@ function onFileSelect(event) {
 }
 
 const openNew = () => {
-  product.value = {};
+  category.value = {};
   submitted.value = false;
-  productDialog.value = true;
+  categoryDialog.value = true;
 };
 
 const hideDialog = () => {
   srcImgModel.value = null
-  productDialog.value = false;
+  categoryDialog.value = false;
   submitted.value = false;
 };
 
 const editProduct = (prod) => {
-  product.value = { ...prod };
-  productDialog.value = true;
+  category.value = { ...prod };
+  categoryDialog.value = true;
 };
 const confirmDeleteProduct = (prod) => {
-  product.value = prod;
-  deleteProductDialog.value = true;
+  category.value = prod;
+  deleteCategoryDialog.value = true;
 };
 
 </script>
@@ -84,8 +73,8 @@ const confirmDeleteProduct = (prod) => {
   <div class="content-container mt-4 product-container">
     <DataTable
       ref="productTable"
-      v-model:selection="selectedProducts"
-      :value="products"
+      v-model:selection="selectedCategory"
+      :value="categorys"
       dataKey="id"
       :paginator="true"
       :rows="10"
@@ -164,9 +153,9 @@ const confirmDeleteProduct = (prod) => {
       </Column>
     </DataTable>
   </div>
-  <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Product Details" :modal="true">
+  <Dialog v-model:visible="categoryDialog" :style="{ width: '450px' }" header="Product Details" :modal="true">
     <div class="flex flex-col gap-6">
-        <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" />
+        <img v-if="category.image" :src="`https://primefaces.org/cdn/primevue/images/product/${category.image}`" :alt="category.image" class="block m-auto pb-4" />
 
         <div class="card flex flex-col items-center gap-6">
           <img v-if="srcImgModel" :src="srcImgModel" alt="Image" class="shadow-md rounded-xl w-full sm:w-64" />
@@ -175,14 +164,14 @@ const confirmDeleteProduct = (prod) => {
 
         <div>
           <label for="name" class="block font-bold mb-3">Name TH</label>
-          <InputText id="name" v-model.trim="product.nameTh" required="true" autofocus :invalid="submitted && !product.nameTh" fluid />
-          <small v-if="submitted && !product.nameTh" class="text-red-500">Name is required.</small>
+          <InputText id="name" v-model.trim="category.nameTh" required="true" autofocus :invalid="submitted && !category.nameTh" fluid />
+          <small v-if="submitted && !category.nameTh" class="text-red-500">Name is required.</small>
         </div>
 
         <div>
           <label for="name" class="block font-bold mb-3">Name EN</label>
-          <InputText id="name" v-model.trim="product.nameEn" required="true" autofocus :invalid="submitted && !product.nameEn" fluid />
-          <small v-if="submitted && !product.nameEn" class="text-red-500">Name is required.</small>
+          <InputText id="name" v-model.trim="category.nameEn" required="true" autofocus :invalid="submitted && !category.nameEn" fluid />
+          <small v-if="submitted && !category.nameEn" class="text-red-500">Name is required.</small>
         </div>
     </div>
 
