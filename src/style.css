@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .dark-mode-custom {
-  @apply dark:!border-blue-500 dark:!bg-gray-900 dark:!text-white dark:border;
+  @apply dark:border dark:!border-blue-500 dark:!bg-gray-900 dark:!text-white;
 }
 
 .content-container {
-  @apply h-[calc(100vh-110px)] mx-auto p-4 bg-white rounded-lg;
+  @apply mx-auto h-[calc(100vh-110px)] max-w-[calc(100vw-280px)] overflow-auto rounded-lg bg-white p-4;
 }

@@ -96,7 +96,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .sidebar-wrap {
-  @apply hidden h-screen flex-col justify-between border-e bg-white sm:flex;
+  @apply hidden h-screen flex-col justify-between border-e bg-white sm:flex ;
 }
 .sidebar-wrap-mobile {
   @apply sm:hidden;

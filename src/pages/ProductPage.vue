@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Product } from "@/interfaces/modules/product";
+import { Product } from "@/interfaces/modules/ProductInterface";
 import { FilterMatchMode } from "@primevue/core/api";
 import { ref } from "vue";
 import { useBaseModalStore } from '@/stores/CategoryStore'
@@ -129,7 +129,7 @@ const getStatusLabel = (status) => {
 };
 </script>
 <template>
-  <div class="content-container mt-4 product-container">
+  <div class="content-container mt-4">
     <DataTable
       ref="productTable"
       v-model:selection="selectedProducts"
@@ -302,9 +302,4 @@ const getStatusLabel = (status) => {
   </Dialog>
 </template>
 
-<style lang="scss" scoped>
- .product-container {
-    overflow-x: auto;
-    max-width: calc(100vw - 300px);
- }
-</style>
+<style lang="scss" scoped></style>

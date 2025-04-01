@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { ref } from "vue"
-import { Category } from "../interfaces/modules/category";
+import { Category } from "../interfaces/modules/CategoryInterface";
 
 export const useBaseModalStore = defineStore('category', () => {
   const categorys = ref<Category[]>([
